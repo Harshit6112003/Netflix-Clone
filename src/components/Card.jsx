@@ -75,7 +75,21 @@ img {
   height: 100%;
   z-index: 10;
 }
+.hover {
+  z-index: 90;
+  height: max-content;
+  width:20rem;
+  position : absolute;
+  top: -18vh;
+  left: 0;
+  border-radius: 0.3rem;
+  box-shadow: rgba(0,0,0,0.75) 0px 3px 10px;
+  background-color: #181818;
+  transition: 0.3s ease-in-out;
+  .image-video-container{
+    
+  }
 
-
+}
 `;
 
