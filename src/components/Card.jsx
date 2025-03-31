@@ -40,27 +40,40 @@ export default function Card({ moviesData, isliked = false }) {
                     
                   }
               </div>
+              <div className="info">
+                <BiChevronDown title='more info' />
+              </div>
+            </div>
+            <div className="genres flex">
+              <ul className='flex'>
+                {moviesData.genres.map((genre)=>{
+                  <li key={genre}>
+                    {genre}
+                  </li>
+                  
+                })}
+              </ul>
             </div>
           </div>
         </div>
 
       )
       }
-
-
-
-
-
-
-
-
-
-
-
-
     </Container>
 
   )
 }
-const Container = styled.div``;
+const Container = styled.div`
+max-width: 230px;
+width: 230px;
+height: 100%;
+cursor: pointer;
+position : relative;
+img {
+  border-radius: 0.2rem;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+`;
 
