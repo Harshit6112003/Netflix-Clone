@@ -87,7 +87,28 @@ img {
   background-color: #181818;
   transition: 0.3s ease-in-out;
   .image-video-container{
+    position: relative;
+    height: 140px;
+    img {
+      width: 100%;
+      height: 140%;
+      object-fit: cover;
+      border-radius: 0.3rem;
+      top: 0;
+      z-index: 4;
+      position :absolute;
+    }
+    video{
     
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 0.3rem;
+      top: 0;
+      z-index: 5;
+      position: absolute;
+    }
+
   }
 
 }
