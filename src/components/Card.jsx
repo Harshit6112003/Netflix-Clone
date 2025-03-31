@@ -19,7 +19,7 @@ export default function Card({ moviesData, isliked = false }) {
       <img src={`https://image.tmdb.org/t/p/w500${moviesData.image}`} alt="movie" />
       {ishovered && (
         <div className="hover">
-          <div className="image-vide-container">
+          <div className="image-video-container">
             <img src={`https://image.tmdb.org/t/p/w500${moviesData.image}`} alt="movie" 
             onClick={()=>navigate("/player")}
             />
@@ -29,7 +29,7 @@ export default function Card({ moviesData, isliked = false }) {
             <h3 className='name' onClick={()=>navigate("/player")}>{moviesData.name}</h3>
             <div className="icons flex j-between">
               <div className="controls flex">
-                <IoPlayCircleSharp title='play' onClick={()=>navigate("/player")}/ >
+                <IoPlayCircleSharp title='play' onClick={()=>navigate("/player")} />
                   <RiThumbUpFill title='like'  />
                   <RiThumbDownFill title='dislike' />
                   {
@@ -46,12 +46,12 @@ export default function Card({ moviesData, isliked = false }) {
             </div>
             <div className="genres flex">
               <ul className='flex'>
-                {moviesData.genres.map((genre)=>{
+                {moviesData.genres.map((genre) => (
                   <li key={genre}>
                     {genre}
                   </li>
                   
-                })}
+                ))}
               </ul>
             </div>
           </div>
@@ -64,53 +64,96 @@ export default function Card({ moviesData, isliked = false }) {
   )
 }
 const Container = styled.div`
-max-width: 230px;
-width: 230px;
-height: 100%;
-cursor: pointer;
-position : relative;
-img {
-  border-radius: 0.2rem;
-  width: 100%;
+  max-width: 230px;
+  width: 230px;
   height: 100%;
-  z-index: 10;
-}
-.hover {
-  z-index: 90;
-  height: max-content;
-  width:20rem;
-  position : absolute;
-  top: -18vh;
-  left: 0;
-  border-radius: 0.3rem;
-  box-shadow: rgba(0,0,0,0.75) 0px 3px 10px;
-  background-color: #181818;
-  transition: 0.3s ease-in-out;
-  .image-video-container{
-    position: relative;
-    height: 140px;
-    img {
-      width: 100%;
-      height: 140%;
-      object-fit: cover;
-      border-radius: 0.3rem;
-      top: 0;
-      z-index: 4;
-      position :absolute;
-    }
-    video{
-    
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 0.3rem;
-      top: 0;
-      z-index: 5;
-      position: absolute;
-    }
-
+  cursor: pointer;
+  position: relative;
+  
+  img {
+    border-radius: 0.2rem;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
   }
 
-}
+  .hover {
+    z-index: 90;
+    height: max-content;
+    width: 20rem;
+    position: absolute;
+    top: -10vh;
+    left: 0;
+    border-radius: 0.3rem;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
+    background-color: #181818;
+    transition: 0.3s ease-in-out;
+
+    .image-video-container {
+      position: relative;
+      height: 140px;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.3rem;
+        top: 0;
+        z-index: 4;
+        position: absolute;
+      }
+
+      video {
+        opacity: 0;
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 0.3rem;
+        top: 0;
+        z-index: 5;
+        position: absolute;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      &:hover video {
+        opacity: 1;
+      }
+    }
+
+    .info-container {
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    svg {
+      font-size: 2rem;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        color: #b8b8b8;
+      }
+    }
+  }
+
+  .genres {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      li {
+        padding-right: 0.7rem;
+
+        &:first-of-type {
+          list-style-type: none;
+        }
+      }
+    }
+  }
 `;
 
