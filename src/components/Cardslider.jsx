@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Card from './Card'
-
+import styled from 'styled-components'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 export default function Cardslider({data,title}) {
+  const [showControls,setShowControls] = useState(false);
+  const [sliderPostion,setsliderPostion] = useState(0);
+  const listRef = useRef();
+  const handleDirection = (direction) => {};
   return( 
-  <div className='flex'>
+    <Container className='flex column'
+    onMouseEnter={()=> setShowControls(true)}
+    onMouseLeave={()=> setShowControls(false)}
+    >
+      <h1>{title}</h1>
+      <div className="wrapper">
+        <div className={`slider-action left ${!showControls ? "none":""} flex j-center a-center`}>
+          <AiOutlineLeft onClick={()=>handleDirection("left")} />
+        </div>
+        <div className='flex slider' ref={listRef}>
     {
         data.map((movie,index)=>{
             return <Card moviesData={movie} index={index} key ={movie.id} />
@@ -11,7 +25,16 @@ export default function Cardslider({data,title}) {
     }
   
   </div>
+  <div className={`slider-action right ${!showControls ? "none":""} flex j-center a-center`}>
+          <AiOutlineRight onClick={()=>handleDirection("right")} />
+        </div>
+      </div>
+ 
+  </Container>
   )
 }
+const Container = styled.div`
 
+
+`;
 
