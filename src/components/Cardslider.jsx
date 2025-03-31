@@ -2,7 +2,8 @@ import React from 'react'
 import Card from './Card'
 
 export default function Cardslider({data,title}) {
-  return( <div>
+  return( 
+  <div className='flex'>
     {
         data.map((movie,index)=>{
             return <Card moviesData={movie} index={index} key ={movie.id} />
