@@ -8,17 +8,21 @@ export default React.memo(function CardSlider({ data, title }) {
   const [sliderPosition, setSliderPosition] = useState(0);
   const listRef = useRef();
 
-  const handleDirection = (direction) => {
-    const distance = listRef.current.getBoundingClientRect().x - 70;
-    if (direction === 'left' && sliderPosition > 0) {
-      listRef.current.style.transform = `translateX(${230 + distance}px)`;
-      setSliderPosition(sliderPosition - 1);
-    }
-    if (direction === 'right' && sliderPosition < 4) {
-      listRef.current.style.transform = `translateX(${-230 + distance}px)`;
-      setSliderPosition(sliderPosition + 1);
-    }
-  };
+ const translateX = useRef(0); // Store current shift
+
+const handleDirection = (direction) => {
+  const shift = 240;
+  if (direction === 'left' && sliderPosition > 0) {
+    translateX.current += shift;
+    listRef.current.style.transform = `translateX(${translateX.current}px)`;
+    setSliderPosition(sliderPosition - 1);
+  } else if (direction === 'right' && sliderPosition < 4) {
+    translateX.current -= shift;
+    listRef.current.style.transform = `translateX(${translateX.current}px)`;
+    setSliderPosition(sliderPosition + 1);
+  }
+};
+
 
   return (
     <Container
