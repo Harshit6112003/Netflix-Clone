@@ -57,7 +57,7 @@ useEffect(() => {
   );
 };
 const Container = styled.div`
-background-color: black;
+background-color: #000000;
 .hero{
   position: relative;
   .background{

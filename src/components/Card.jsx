@@ -8,7 +8,7 @@ import {RiThumbUpFill,RiThumbDownFill } from 'react-icons/ri';
 import {BsCheck } from 'react-icons/bs';
 import {AiOutlinePlus } from 'react-icons/ai';
 import {BiChevronDown} from 'react-icons/bi';
-export default function Card({ moviesData, isliked = false }) {
+export default React.memo(function Card({ moviesData, isliked = false }) {
   const [ishovered, setishovered] = useState(false);
   const navigate = useNavigate();
   return (
@@ -62,7 +62,7 @@ export default function Card({ moviesData, isliked = false }) {
     </Container>
 
   )
-}
+})
 const Container = styled.div`
   max-width: 230px;
   width: 230px;
